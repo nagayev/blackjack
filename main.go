@@ -19,12 +19,13 @@ func input(prompt string) string {
 	return strings.TrimSpace(text) //delete \r \n
 }
 func botChoise(botScore *int) {
-	if randint(1, 3) != 1 && *botScore <= 19 {
+	if randInt(1, 3) != 1 && *botScore <= 19 {
 		//AI))) Bot is smart enougth
 		*botScore += randInt(2, 11)
 	}
 	if *botScore > 21 {
-		fmt.Printf("Бот проиграл)")
+		fmt.Printf("Бот проиграл)\n")
+		input("Нажми Enter для выхода!")
 		os.Exit(0)
 	}
 }
@@ -40,7 +41,8 @@ func main() {
 		if answer == "д" {
 			score += randInt(2, 11)
 			if score > 21 {
-				fmt.Printf("Ты проиграл :(\nУ тебя %d очков", score)
+				fmt.Printf("Ты проиграл :(\nУ тебя %d очков\n", score)
+				input("Нажми Enter для выхода!")
 				os.Exit(0)
 			}
 			botChoise(&botScore)
@@ -52,10 +54,11 @@ func main() {
 		}
 	}
 	if botScore > score {
-		fmt.Printf("Бот выиграл %s\nУ бота %d очков, а у тебя - %d", username, botScore, score)
+		fmt.Printf("Бот выиграл %s\nУ бота %d очков, а у тебя - %d\n", username, botScore, score)
 	} else if botScore < score {
-		fmt.Printf("Ты выиграл!\nУ тебя %d очков, а у бота - %d", score, botScore)
+		fmt.Printf("Ты выиграл!\nУ тебя %d очков, а у бота - %d\n", score, botScore)
 	} else {
-		fmt.Printf("Ничья!")
+		fmt.Printf("Ничья!\n")
 	}
+	input("Нажми Enter для выхода!")
 }
